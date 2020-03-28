@@ -1,0 +1,8 @@
+# ignore all logs
+*.log
+
+#npm modules
+/node_module
+
+#misc
+/backup

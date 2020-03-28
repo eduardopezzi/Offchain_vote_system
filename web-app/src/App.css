@@ -1,0 +1,48 @@
+body {
+  text-align: left;
+  background-color: #282c34;
+  margin-left: 20px;
+}
+
+.App-header {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+#vote-div {
+  color: white;
+  align-items: center;
+  font-size: 20px;
+  max-width: inherit;
+  display: flex;
+  text-align: center;
+
+  margin-left: 50px;
+}
+
+#vote {
+  color: white;
+  align-items: center;
+  font-size: 20px;
+  width: 90px;
+}
+
+#vote-label {
+  margin-left: -10px;
+  color: white;
+  font-size: 18px;
+}
+
+#vote {
+  color: white;
+  margin-left: 20px;
+  font-size: 14px;
+}
+
+#voteButton {
+  font-size: small;
+}
