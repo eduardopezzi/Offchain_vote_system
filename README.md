@@ -17,7 +17,9 @@ The initial setup for running properly is to run Ganache (Cli or desktop version
 ## Prerequisites
 
 Npm ^6.13.4
+
 Truffle 5.0.42
+
 Ganache
 
 ### Tests
@@ -32,19 +34,11 @@ Test 3 - This is testing the contract's main function. It simulates casting a vo
 
 ## Web Interface
 
-## Built With
+As a prototype, the web application is not fully developed yet. But it was developed as a start to future development, interacting with metamask and the contract.
 
-- [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-- [Maven](https://maven.apache.org/) - Dependency Management
-- [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+![App-interface](Voting_app_Sample.png)
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+The idea is in the server side, vote-tree.js program will run the functions and auto complete, path, witnesses and merkelroot, while the interface working with metamask, will provide the user address to generate this information. Therefore, this application can be more dynamic, been able to add more address along the polling period and also having multiple polls within the same application.
 
 ## Authors
 
@@ -52,4 +46,4 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](https://opensource.org/licenses/MIT) file for details
