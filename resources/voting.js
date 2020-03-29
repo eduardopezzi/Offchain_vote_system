@@ -29,10 +29,6 @@ console.log(proofPath);
 let proofWitnesses = voteTree.merkleProof(addresses, process.argv[2]).witnesses;
 console.log("witnesses", JSON.stringify(proofWitnesses));
 
-// let proof = voteTree.merkleProof(addresses, Account);
-// console.log(proof.path);
-// console.log("path: ", proof.path);
-
 // Vote to be cast
 let Vote = JSON.stringify(process.argv[3]);
 console.log("Vote:", Vote);
