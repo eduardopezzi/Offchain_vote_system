@@ -38,7 +38,7 @@ As a prototype, the web application is not fully developed yet. But it was devel
 
 <img src="Voting_app_Sample.png"
      alt="App-interface"
-     style="float: center; width: 100px;" />
+     style="float: center; width: 10px;" />
 
 The idea is in the server side, vote-tree.js program will run the functions and auto complete, path, witnesses and merkelroot, while the interface working with metamask, will provide the user address to generate this information. Therefore, this application can be more dynamic, been able to add more address along the polling period and also having multiple polls within the same application.
 
