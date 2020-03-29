@@ -8,37 +8,56 @@ import {
   FormLabel,
   RadioGroup,
   FormControlLabel,
-  Radio
+  Radio,
+  TextField
 } from "@material-ui/core";
 
-import sendTransaction from "./sendTransaction";
-
-// import Web3 from "web3";
+import web3 from "./web3";
+import { ABI, CONTRACT_ADDRESS } from "./contract";
+// import votingJS from "./resources/voter-tree";
 
 function App() {
+  var votingContract = new web3.eth.Contract(ABI, CONTRACT_ADDRESS);
+  /// State ///
   const [account, setAccount] = useState("");
-  const [account2, setAccount2] = useState("");
-  const [vote, setVote] = useState(Boolean);
+  const [vote, setVote] = useState("");
+  const [path, setPath] = useState("");
+  const [witnessess, setWitnessess] = useState([]);
+  const [root, setRoot] = useState("");
+
+  // interacting with metamask
+  useEffect(() => {
+    window.ethereum.enable().then(function(accounts) {
+      setAccount(accounts[0]);
+    });
+  });
   window.ethereum.on("accountsChanged", function(accounts) {
     window.ethereum.enable().then(function(accounts) {
       setAccount(accounts[0]);
-      setAccount2("0x90415E66A753010B7E453F489bBbf23848497936");
     });
   });
+
+  // app functions
   const handleChange = event => {
     setVote(event.target.value);
   };
-
   const onClick = async () => {
     castVote();
   };
-
+  const handleChangePath = event => {
+    setPath(event.target.value);
+  };
+  const handleChangeWit = event => {
+    const array = JSON.parse(event.target.value);
+    setWitnessess(array);
+  };
+  const handleChangeRoot = event => {
+    setRoot(event.target.value);
+  };
   const castVote = async () => {
-    await sendTransaction({
-      valueInEth: 0, //amountCandidate ? amountCandidate : amountCharity,
-      gas: 4200000,
-      destinationAddress: account2 // amountCandidate ? addressCandidate : addressCharity
-    });
+    await votingContract.methods
+      .vote(path, witnessess, vote)
+      .send({ from: account, gas: 6000000 });
   };
 
   if (!window.ethereum || !window.ethereum.isMetaMask) {
@@ -61,15 +80,43 @@ function App() {
               value={vote}
               onChange={handleChange}
             >
-              <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
-              <FormControlLabel value="No" control={<Radio />} label="No" />
-              <Box m={2} />
+              <FormControlLabel value="true" control={<Radio />} label="Yes" />
+              <FormControlLabel value="false" control={<Radio />} label="No" />
+              <Box m={1} />
               <Button id="voteButton" variant="contained" onClick={onClick}>
                 {" "}
                 Vote{" "}
               </Button>
             </RadioGroup>
           </FormControl>
+        </div>
+        <Box m={2} />
+        <div>
+          <form id="merkle-data">
+            <TextField
+              id="input-path"
+              label="Path"
+              variant="outlined"
+              value={path}
+              onChange={handleChangePath}
+            />
+            <Box m={1} />
+            <TextField
+              id="input-Witnessess"
+              label="Witnessess"
+              variant="outlined"
+              value={witnessess}
+              onChange={handleChangeWit}
+            />
+            <Box m={1} />
+            <TextField
+              id="input-Root"
+              label="Merkle-Root"
+              variant="outlined"
+              value={root}
+              onChange={handleChangeRoot}
+            />
+          </form>
         </div>
       </div>
     );

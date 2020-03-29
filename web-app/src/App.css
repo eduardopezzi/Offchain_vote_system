@@ -1,6 +1,6 @@
 body {
   text-align: left;
-  background-color: #282c34;
+  background-color: dimgray;
   margin-left: 20px;
 }
 
@@ -27,20 +27,15 @@ body {
 #vote {
   color: white;
   align-items: center;
-  font-size: 20px;
   width: 90px;
+  margin-left: 20px;
+  font-size: 14px;
 }
 
 #vote-label {
   margin-left: -10px;
   color: white;
   font-size: 18px;
-}
-
-#vote {
-  color: white;
-  margin-left: 20px;
-  font-size: 14px;
 }
 
 #voteButton {

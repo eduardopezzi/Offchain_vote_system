@@ -33,14 +33,15 @@ contract("Voting", accounts => {
     });
   });
 
-  it("0- Test eligibleVotersMerkleRoot is correct", async () => {
+  it("0- voting() should have address", async () => {
+    assert.ok(voting.address, "Contract not deployed");
+  });
+
+  it("1- Test eligibleVotersMerkleRoot is correct", async () => {
     let rootHash = await voting.eligibleVotersMerkleRoot.call();
     assert.equal(rootHash, root, "merkleRoot is different from contract");
   });
 
-  it("1- voting() should have address", async () => {
-    assert.ok(voting.address, "Contract not deployed");
-  });
   it("2- voting() should call Owner address", async () => {
     let owner = await voting.owner.call();
     const account0 = await accounts[0];
