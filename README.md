@@ -36,7 +36,7 @@ Test 3 - This is testing the contract's main function. It simulates casting a vo
 
 As a prototype, the web application is not fully developed yet. But it was developed as a start to future development, interacting with metamask and the contract.
 
-![app|50%]](Voting_app_Sample.png)
+![app](Voting_app_Sample.png)
 
 The idea is in the server side, vote-tree.js program will run the functions and auto complete, path, witnesses and merkelroot, while the interface working with metamask, will provide the user address to generate this information. Therefore, this application can be more dynamic, been able to add more address along the polling period and also having multiple polls within the same application.
 
