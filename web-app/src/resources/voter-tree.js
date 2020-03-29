@@ -43,7 +43,7 @@ function merkleRoot(addresses) {
   while (level.length > 1) {
     level = hashLevel(level);
   }
-  console.log(level[0]);
+  //console.log(level[0]);
   return level[0];
 }
 

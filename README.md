@@ -30,7 +30,9 @@ Test 1 - It tests the eligibleVotersMerkleRoot variable that is one constructor 
 
 Test 2 - It tests the owner variable, if it got the correct one.
 
-Test 3 - This is testing the contract's main function. It simulates casting a vote, taking your Ganache's second account to generate a witnessess array and Merkle tree path and paste this information with your vote to the contract. To certify that the transaction succeed, the test assert if a Voted event was emitted as well as if the vote was incremented to the results of the poll.
+Test 3 - It changes the contract status from "isStopped = false" to "isStopped = true" and test a transaction revert due to stopped status. At the end it changes again the status to false.
+
+Test 4 - This is testing the contract's main function. It simulates casting a vote, taking your Ganache's second account to generate a witnessess array and Merkle tree path and paste this information with your vote to the contract. To certify that the transaction succeed, the test assert if a Voted event was emitted as well as if the vote was incremented to the results of the poll.
 
 ## Web Interface
 
@@ -45,6 +47,8 @@ The idea is in the server side, vote-tree.js program will run the functions and 
 This application is one exemple how to use blockchain on and off-chain features to make more secure solutions. Using merkle tree and hash functions makes this solution reliable and decentralized as once the list of voters are set, it impossible to tamper the key that enable each voter to vote.
 
 Also, this contract was developed with some security measures to make the voting system secure and reliable. It was included two modifiers, one to stop the poll when it is finished or if any problem happens. Another one is to set only owner permission to stop the contract or othe future function as it requires.
+
+As it is a simple smartcontract and it does not involve exchange of values and, therefore, it reduces risks of attack. However, Denail of Service Attacks was considered as the contract has a loop inside of function. To prevent DoS attack was inserted a limit of witnesses, avoiding cost of function execution exceeds block gas limit.
 
 ## Authors
 

@@ -15,7 +15,6 @@ let addresses = fs
 
 // Merkle Root
 let root = voteTree.merkleRoot(addresses);
-console.log("root:", root);
 
 //Voter Account >>>> in a web application should be using Meta Mask account
 // let Account1 = "0x90415E66A753010B7E453F489bBbf23848497936";
@@ -28,7 +27,7 @@ contract("Voting", accounts => {
   let proofWitnesses = voteTree.merkleProof(addresses, Account1).witnesses;
 
   before(() => {
-    return Voting.deployed().then(instance => {
+    return Voting.deployed(root).then(instance => {
       voting = instance;
     });
   });
@@ -51,8 +50,39 @@ contract("Voting", accounts => {
       "owners function returns another owner address"
     );
   });
+  it("3- Voting() should stop the contract", async () => {
+    let owner = await voting.owner.call();
+    /// get initial contract status
+    let initialStatus = await voting.isStopped.call();
+    /// change contract status to stopped
+    await voting.stopContract.sendTransaction({ from: owner });
+    /// get final status
+    let finalStatus = await voting.isStopped.call();
+    assert.ok(initialStatus !== finalStatus, "Contract status did NOT change");
 
-  it("3 - voting() should cast a vote", async () => {
+    /// Try a vote transaction and expect revert
+    try {
+      let tx1 = await voting.vote.sendTransaction(
+        proofPath,
+        proofWitnesses,
+        false,
+        {
+          from: Account1
+        }
+      );
+    } catch (err) {
+      const errorMessage =
+        err.message.search(
+          "VM Exception while processing transaction: revert"
+        ) >= 0;
+      assert(errorMessage, "Expected an Exception error but did not get one");
+    }
+    await voting.stopContract.sendTransaction({ from: owner });
+  });
+
+  it("4 - voting() should cast a vote", async () => {
+    // let owner = await voting.owner.call();
+    // await voting.stopContract.sendTransaction({ from: owner });
     let tx = await voting.vote.sendTransaction(
       proofPath,
       proofWitnesses,
@@ -61,6 +91,7 @@ contract("Voting", accounts => {
         from: Account1
       }
     );
+
     /// Event Voted EMITTED ///
     truffleAssert.eventEmitted(tx, "Voted", async ev => {
       assert.ok(
@@ -70,6 +101,6 @@ contract("Voting", accounts => {
     });
     /// Checking if vote was added to results
     let voteResult = await voting.noVotes();
-    assert.equal(voteResult, 1, "User vote does NOT recorded");
+    assert.equal(voteResult, 1, "User vote did NOT record");
   });
 });

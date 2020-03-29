@@ -1,33 +1,27 @@
-pragma solidity ^0.6.0;
+pragma solidity ^0.5.0;
 
 contract Voting {
-    address owner;
-    bytes32 eligibleVotersMerkleRoot;
+    address public owner;
+    bytes32 public eligibleVotersMerkleRoot;
     uint64 public yesVotes;
     uint64 public noVotes;
-    bool public isStopped = false;
+    bool public isStopped;
 
     mapping(address => bool) voted;
 
     modifier stopped {
-        require(!isStopped);
+        require(!isStopped, "Stopped");
         _;
     }
 
     modifier onlyAuthorized {
-        require(!isStopped, "Is Stopped");
+        require(owner == msg.sender, "Only Owner");
         _;
     }
 
     function stopContract() public onlyAuthorized {
-        if (!isStopped) {
-            isStopped = true;
-        } else {
-            isStopped = false;
-
-        }
+        isStopped = !isStopped;
     }
-
     constructor(bytes32 eligibleVotersMerkleRoot_) public {
         eligibleVotersMerkleRoot = eligibleVotersMerkleRoot_;
         owner = msg.sender;
@@ -37,6 +31,7 @@ contract Voting {
         public
         stopped
     {
+        assert(witnesses.length < 30);
         //validate the proof!
         bytes32 node = leafHash(msg.sender);
         // bytes32 node;
