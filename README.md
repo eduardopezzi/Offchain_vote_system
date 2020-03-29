@@ -40,6 +40,12 @@ As a prototype, the web application is not fully developed yet. But it was devel
 
 The idea is in the server side, vote-tree.js program will run the functions and auto complete, path, witnesses and merkelroot, while the interface working with metamask, will provide the user address to generate this information. Therefore, this application can be more dynamic, been able to add more address along the polling period and also having multiple polls within the same application.
 
+## Security
+
+This application is one exemple how to use blockchain on and off-chain features to make more secure solutions. Using merkle tree and hash functions makes this solution reliable and decentralized as once the list of voters are set, it impossible to tamper the key that enable each voter to vote.
+
+Also, this contract was developed with some security measures to make the voting system secure and reliable. It was included two modifiers, one to stop the poll when it is finished or if any problem happens. Another one is to set only owner permission to stop the contract or othe future function as it requires.
+
 ## Authors
 
 - **Eduardo Pezzi**

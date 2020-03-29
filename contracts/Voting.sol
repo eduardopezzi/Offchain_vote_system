@@ -1,8 +1,8 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.6.0;
 
 contract Voting {
-    address public owner;
-    bytes32 public eligibleVotersMerkleRoot;
+    address owner;
+    bytes32 eligibleVotersMerkleRoot;
     uint64 public yesVotes;
     uint64 public noVotes;
     bool public isStopped = false;

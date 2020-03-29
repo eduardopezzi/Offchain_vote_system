@@ -31,6 +31,7 @@ function App() {
       setAccount(accounts[0]);
     });
   });
+
   window.ethereum.on("accountsChanged", function(accounts) {
     window.ethereum.enable().then(function(accounts) {
       setAccount(accounts[0]);
