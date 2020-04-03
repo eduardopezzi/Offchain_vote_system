@@ -56,7 +56,7 @@ As it is a simple smartcontract and it does not involve exchange of values and, 
 
 ## Sources
 
-This merkle tree solution was based on Doug Hoyte [hoytech!](https://github.com/hoytech) code.
+This merkle tree solution was based on [Doug Hoyte](https://github.com/hoytech) code.
 
 ## Contributing
 
