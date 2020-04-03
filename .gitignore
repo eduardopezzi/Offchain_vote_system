@@ -2,7 +2,7 @@
 *.log
 
 #npm modules
-/node_module
+/node_modules
 
 #misc
 /backup

@@ -10,7 +10,11 @@ This Project goal is to simulate a voting system on Ethereum Blockchain using me
 ## Getting Started
 
 Clone this project from https://github.com/eduardopezzi/Offchain_vote_system
-On the project folder type npm install command
+On the project folder type
+
+```bash
+npm install
+```
 
 The initial setup for running properly is to run Ganache (Cli or desktop version), and copy the first and second accounts from Ganache and paste into the addresses.txt, and run truffle test command. Make sure that your Ganache is running under the port 7545.
 
@@ -49,6 +53,14 @@ This application is one exemple how to use blockchain on and off-chain features 
 Also, this contract was developed with some security measures to make the voting system secure and reliable. It was included two modifiers, one to stop the poll when it is finished or if any problem happens. Another one is to set only owner permission to stop the contract or othe future function as it requires.
 
 As it is a simple smartcontract and it does not involve exchange of values and, therefore, it reduces risks of attack. However, Denail of Service Attacks was considered as the contract has a loop inside of function. To prevent DoS attack was inserted a limit of witnesses, avoiding cost of function execution exceeds block gas limit.
+
+## Sources
+
+This merkle tree solution was based on Doug Hoyte [hoytech!](https://github.com/hoytech) code.
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## Authors
 

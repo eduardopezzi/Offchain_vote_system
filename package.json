@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/eduardopezzi/Offchain_vote_system#readme",
   "dependencies": {
+    "chai": "^4.2.0",
+    "ethers": "^4.0.46",
     "react": "^16.13.1",
     "truffle-assertions": "^0.9.2"
   }
