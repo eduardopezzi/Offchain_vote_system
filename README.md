@@ -7,6 +7,7 @@ This Project goal is to simulate a voting system on Ethereum Blockchain using me
 - Initial Layout of web application
 - NodeJS Merkle tree generator program and others resources
 
+
 ## Getting Started
 
 Clone this project from https://github.com/eduardopezzi/Offchain_vote_system
